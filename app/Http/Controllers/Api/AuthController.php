@@ -8,23 +8,27 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         $credentials = $request->validate([
             'email'     => 'required|email',
-            'password'  => 'required|password'
+            'password'  => 'required|password',
         ]);
 
-        if(!$token = Auth::guard('api')->attempt($credentials)){
+        if (! $token = Auth::guard('api')->attempt($credentials)) {
             return response()->json([
                 'message' => 'Credenciales incorrecta.',
             ], 401);
         }
 
         return response()->json([
-            'Token creado' => $token
+            'Token creado' => $token,
         ], 201);
     }
 
+    public function me()
+    {
+        return response()->json(Auth::guard('api')->user());
+    }
 }
