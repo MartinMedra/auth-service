@@ -29,4 +29,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getJWTIdentifier(): mixed
+    {
+        return $this->getKey(); //return el id del usuario
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return[
+            'email' => $this->email,
+            'name' => $this->name
+        ];
+    }
 }
