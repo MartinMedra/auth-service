@@ -19,7 +19,7 @@ Microservicio de autenticación construido con **Laravel 11** y **JWT**. Su úni
 
 ## ¿Por qué JWT y no Sanctum?
 
-Sanctum almacena las sesiones en base de datos, lo que obligaría al Pieces Service a consultar la BD del Auth Service en cada petición — eso acopla los servicios. Con JWT el token es **stateless**: cualquier servicio que comparta el mismo `JWT_SECRET` puede validarlo localmente sin red ni BD extra. Eso sí es arquitectura de microservicios real.
+Sanctum almacena las sesiones en base de datos, lo que obligaría al Pieces Service a consultar la BD del Auth Service en cada petición — eso acopla los servicios. Con JWT el token es **stateless**: cualquier servicio que comparta el mismo `JWT_SECRET` puede validarlo localmente sin red ni BD extra.
 
 ---
 
